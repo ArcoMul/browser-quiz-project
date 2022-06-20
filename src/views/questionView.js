@@ -24,3 +24,8 @@ export const createQuestionElement = (question) => {
 
   return element;
 };
+export const createFullTime=()=>{
+  const fullTime=document.createElement('div');
+  return fullTime
+
+}

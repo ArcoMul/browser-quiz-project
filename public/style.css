@@ -15,3 +15,9 @@
 ul {
   list-style: none;
 }
+#full-time{
+  font-size: 3em;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-top: 100px;
+}
