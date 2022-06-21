@@ -38,15 +38,14 @@ const nextQuestion = () => {
 
   initQuestionPage();
 };
+
 // add pressure timer to quiz
+
 export const appendFullTimeCounter=()=>{
- 
   const fullTimeElement=createFullTime();
   document.body.appendChild(fullTimeElement);
 let fullTime = 300;
  const setFullTimeCounter=()=>{
-
-
   let minutes =Math.floor(fullTime/60);
   let second = fullTime%60 ;
   second=second<10?'0'+second:second ;
@@ -56,11 +55,8 @@ let fullTime = 300;
   }
   fullTimeElement.innerHTML=`<p id="${FULL_TIME}">${minutes}:${second}</p>`;
  if (fullTime<30){
-   
     fullTimeElement.style.color ='red'
   }
- 
 }
 return setFullTimeCounter
 }
-// add pressure time to each question 
