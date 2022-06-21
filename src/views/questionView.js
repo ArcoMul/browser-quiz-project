@@ -27,5 +27,4 @@ export const createQuestionElement = (question) => {
 export const createFullTime=()=>{
   const fullTime=document.createElement('div');
   return fullTime
-
 }
