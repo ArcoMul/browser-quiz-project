@@ -25,10 +25,6 @@ export const createQuestionElement = (question) => {
   return element;
 };
 
-export const createFullTime=()=>{
-  const fullTime=document.createElement('div');
-  return fullTime
-}
 export const createProgressElement = (numberOfQuestions,questionIndex, score) => {
   const element = document.createElement('div');
   element.innerHTML = String.raw`
@@ -49,4 +45,8 @@ export const createProgressElement = (numberOfQuestions,questionIndex, score) =>
   progressBarInside.style.width = `${questionIndex /numberOfQuestions* 100}%`;
   return element;
 };
-
+export const createFullTime=()=>{
+  const fullTime=document.createElement('div');
+  fullTime.classList.add('timer');
+  return fullTime
+}

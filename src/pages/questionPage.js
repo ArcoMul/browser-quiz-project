@@ -70,11 +70,12 @@ const nextQuestion = () => {
 
 // add pressure timer to quiz
 
-export const appendFullTimeCounter=()=>{
+export const creatTimeElement=()=>{
   const fullTimeElement=createFullTime();
-  document.body.appendChild(fullTimeElement);
+  const progressTime=document.querySelector('.user-progress')
+  progressTime.appendChild(fullTimeElement);
 let fullTime = 300;
- const setFullTimeCounter=()=>{
+ const setTimeCounter=()=>{
   let minutes =Math.floor(fullTime/60);
   let second = fullTime%60 ;
   second=second<10?'0'+second:second ;
@@ -87,5 +88,5 @@ let fullTime = 300;
     fullTimeElement.style.color ='red'
   }
 }
-return setFullTimeCounter
+return setTimeCounter
 }
