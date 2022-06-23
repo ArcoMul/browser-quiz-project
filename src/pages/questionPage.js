@@ -13,7 +13,10 @@ import {
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { createFullTime } from '../views/questionView.js';
+import { createAlertElement } from '../views/questionView.js';
 
+
+let currentAnswerElement= [];
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -24,7 +27,7 @@ export const initQuestionPage = () => {
   const userProgress = createProgressElement(
     quizData.questions.length,
     quizData.currentQuestionIndex + 1,
-    50
+    0
   );
 
   userInterface.appendChild(userProgress);
@@ -37,6 +40,7 @@ export const initQuestionPage = () => {
     answersListElement.appendChild(answerElement);
     answerElement.addEventListener('click', function () {
       quizData.currentQuestionAnswer = key;
+      currentAnswerElement = answerElement;
       answersListElement
         .querySelectorAll('.selected')
         .forEach((element) => element.classList.remove('selected'));
@@ -53,19 +57,25 @@ const nextQuestion = () => {
   const correctAnswer = quizData.questions[quizData.currentQuestionIndex].correct;
   const addClass = quizData.currentQuestionAnswer === correctAnswer ? 'correct' : 'wrong';
   const body = document.getElementById(USER_INTERFACE_ID);
-  if(quizData.currentQuestionAnswer === correctAnswer ){
-    body.classList.add(addClass)
-  } else{
-    body.classList.add(addClass)
+  if (quizData.currentQuestionAnswer===null) {
+    const alertElement = createAlertElement();
+    body.appendChild(alertElement);
+    quizData.currentQuestionIndex = quizData.currentQuestionIndex -1;
+  } else if(quizData.currentQuestionAnswer === correctAnswer ) {
+    currentAnswerElement.classList.remove('selected')
+    currentAnswerElement.classList.add(addClass)
+  } else {
+    currentAnswerElement.classList.remove('selected')
+    currentAnswerElement.classList.add(addClass)
   }
+  quizData.currentQuestionAnswer = null
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   document.getElementById(NEXT_QUESTION_BUTTON_ID).removeEventListener('click', nextQuestion);
 
   setTimeout(() => {
     initQuestionPage();
-    body.classList.remove(addClass)
+    currentAnswerElement.classList.remove(addClass)
   }, 1500);
-  
 };
 
 // add pressure timer to quiz
