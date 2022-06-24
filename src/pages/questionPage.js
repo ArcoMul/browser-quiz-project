@@ -6,6 +6,7 @@ import {
   USER_INTERFACE_ID,
   FULL_TIME,
   USER_PROGRESS,
+  TIMER,
 } from '../constants.js';
 import {
   createQuestionElement,
@@ -13,11 +14,13 @@ import {
 } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
-import { createFullTime } from '../views/questionView.js';
 import { createAlertElement } from '../views/questionView.js';
 
 let currentAnswerElement = [];
 export const initQuestionPage = () => {
+  if (quizData.currentQuestionIndex === 0) {
+    creatTimeElement();
+  }
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
@@ -51,7 +54,6 @@ export const initQuestionPage = () => {
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
-  creatTimeElement();
 };
 
 const nextQuestion = () => {
@@ -86,14 +88,21 @@ const nextQuestion = () => {
 // add pressure timer to quiz
 
 export const creatTimeElement = () => {
-  createFullTime();
   let timeCounter = new Date().getTime() + quizData.dateTime * 1000 * 60;
-  setInterval(() => {
+  const timer = setInterval(() => {
     let now = new Date().getTime();
     let target = timeCounter - now;
     let minute = Math.floor((target % (1000 * 60 * 60)) / (1000 * 60));
     let second = Math.floor((target % (1000 * 60)) / 1000);
-    document.querySelector('.timer').innerHTML = String.raw`
+    document.querySelector(`.${TIMER}`).innerHTML = String.raw`
 ${minute}:${second}`;
+    if (target < 0) {
+      clearInterval(timer);
+      document.querySelector(`.${TIMER}`).style.fontSize = '15px';
+      document.querySelector(`.${TIMER}`).innerHTML = String.raw`
+      Sorry,Time is up`;
+
+      //add code for go straight to result page
+    }
   }, 1000);
 };

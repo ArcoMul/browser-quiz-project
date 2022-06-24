@@ -14,3 +14,4 @@ export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
 export const FULL_TIME = 'full-time';
 export const ALERT_DIDNT_ANSWER = 'alert-didnt-answer';
 export const USER_PROGRESS = 'user-progress';
+export const TIMER = 'timer';

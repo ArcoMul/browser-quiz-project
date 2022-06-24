@@ -1,6 +1,6 @@
 'use strict';
 
-import { ANSWERS_LIST_ID } from '../constants.js';
+import { ANSWERS_LIST_ID, TIMER } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { ALERT_DIDNT_ANSWER } from '../constants.js';
 import { USER_PROGRESS } from '../constants.js';
@@ -63,18 +63,13 @@ export const createProgressElement = (
   <div className="progress-item">
     <h2 id="score-text">Score</h2>
     <h2 id="score">${numberOfCorrects * 10}</h2>
-  </div>`;
+  </div>
+  <div class=${TIMER}> 
+  </div>
+  `;
   const progressBarInside = element.querySelector('#progress-bar-inside');
   progressBarInside.style.width = `${
     (questionIndex / numberOfQuestions) * 100
   }%`;
   return element;
-};
-
-export const createFullTime = () => {
-  const fullTime = document.createElement('div');
-  fullTime.classList.add('timer');
-  const progressTime = document.querySelector(USER_PROGRESS);
-  progressTime.append(fullTime);
-  return fullTime;
 };
