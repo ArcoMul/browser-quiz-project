@@ -17,8 +17,8 @@ export const createResultElement = (results) => {
 
     questionCard.innerHTML = String.raw`
   <h2>${result.text}</h2>
-  <p>Your answer:${result.answers[userAnswers[results.indexOf(result)]]} </p>
-  <p>Correct answer: ${result.correct} = ${result.answers[result.correct]}</p>
+  <p>Your answer = ${result.answers[userAnswers[results.indexOf(result)]]} </p>
+  <p>Correct answer = ${result.answers[result.correct]}</p>
    <h3>Read more about:</h3>
   `;
 
