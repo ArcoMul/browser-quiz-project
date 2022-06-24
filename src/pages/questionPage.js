@@ -4,7 +4,8 @@ import {
   ANSWERS_LIST_ID,
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
-  FULL_TIME
+  FULL_TIME,
+  USER_PROGRESS,
 } from '../constants.js';
 import {
   createQuestionElement,
@@ -15,8 +16,7 @@ import { quizData } from '../data.js';
 import { createFullTime } from '../views/questionView.js';
 import { createAlertElement } from '../views/questionView.js';
 
-
-let currentAnswerElement= [];
+let currentAnswerElement = [];
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -51,52 +51,49 @@ export const initQuestionPage = () => {
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
+  creatTimeElement();
 };
 
 const nextQuestion = () => {
-  const correctAnswer = quizData.questions[quizData.currentQuestionIndex].correct;
-  const addClass = quizData.currentQuestionAnswer === correctAnswer ? 'correct' : 'wrong';
+  const correctAnswer =
+    quizData.questions[quizData.currentQuestionIndex].correct;
+  const addClass =
+    quizData.currentQuestionAnswer === correctAnswer ? 'correct' : 'wrong';
   const body = document.getElementById(USER_INTERFACE_ID);
-  if (quizData.currentQuestionAnswer===null) {
+  if (quizData.currentQuestionAnswer === null) {
     const alertElement = createAlertElement();
     body.appendChild(alertElement);
-    quizData.currentQuestionIndex = quizData.currentQuestionIndex -1;
-  } else if(quizData.currentQuestionAnswer === correctAnswer ) {
-    currentAnswerElement.classList.remove('selected')
-    currentAnswerElement.classList.add(addClass)
+    quizData.currentQuestionIndex = quizData.currentQuestionIndex - 1;
+  } else if (quizData.currentQuestionAnswer === correctAnswer) {
+    currentAnswerElement.classList.remove('selected');
+    currentAnswerElement.classList.add(addClass);
   } else {
-    currentAnswerElement.classList.remove('selected')
-    currentAnswerElement.classList.add(addClass)
+    currentAnswerElement.classList.remove('selected');
+    currentAnswerElement.classList.add(addClass);
   }
-  quizData.currentQuestionAnswer = null
+  quizData.currentQuestionAnswer = null;
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
-  document.getElementById(NEXT_QUESTION_BUTTON_ID).removeEventListener('click', nextQuestion);
+  document
+    .getElementById(NEXT_QUESTION_BUTTON_ID)
+    .removeEventListener('click', nextQuestion);
 
   setTimeout(() => {
     initQuestionPage();
-    currentAnswerElement.classList.remove(addClass)
+    currentAnswerElement.classList.remove(addClass);
   }, 1500);
 };
 
 // add pressure timer to quiz
 
-export const creatTimeElement=()=>{
-  const fullTimeElement=createFullTime();
-  const progressTime=document.querySelector('.user-progress')
-  progressTime.appendChild(fullTimeElement);
-let fullTime = 300;
- const setTimeCounter=()=>{
-  let minutes =Math.floor(fullTime/60);
-  let second = fullTime%60 ;
-  second=second<10?'0'+second:second ;
-  fullTime--;
-  if (fullTime<0){
-  fullTime++
-  }
-  fullTimeElement.innerHTML=`<p id="${FULL_TIME}">${minutes}:${second}</p>`;
- if (fullTime<30){
-    fullTimeElement.style.color ='red'
-  }
-}
-return setTimeCounter
-}
+export const creatTimeElement = () => {
+  createFullTime();
+  let timeCounter = new Date().getTime() + quizData.dateTime * 1000 * 60;
+  setInterval(() => {
+    let now = new Date().getTime();
+    let target = timeCounter - now;
+    let minute = Math.floor((target % (1000 * 60 * 60)) / (1000 * 60));
+    let second = Math.floor((target % (1000 * 60)) / 1000);
+    document.querySelector('.timer').innerHTML = String.raw`
+${minute}:${second}`;
+  }, 1000);
+};

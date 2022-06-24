@@ -3,6 +3,7 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { ALERT_DIDNT_ANSWER } from '../constants.js';
+import { USER_PROGRESS } from '../constants.js';
 
 /**
  * Create a full question element
@@ -39,7 +40,7 @@ export const createProgressElement = (
   numberOfCorrects
 ) => {
   const element = document.createElement('div');
-  element.classList.add('user-progress');
+  element.classList.add(`${USER_PROGRESS}`);
   element.innerHTML = String.raw`
   <div className="progress-item"> 
     <h2 id="progress-text">Question ${questionIndex}/${numberOfQuestions}</h2>
@@ -70,8 +71,10 @@ export const createProgressElement = (
   return element;
 };
 
-export const createFullTime=()=>{
-  const fullTime=document.createElement('div');
+export const createFullTime = () => {
+  const fullTime = document.createElement('div');
   fullTime.classList.add('timer');
-  return fullTime
-}
+  const progressTime = document.querySelector(USER_PROGRESS);
+  progressTime.append(fullTime);
+  return fullTime;
+};
