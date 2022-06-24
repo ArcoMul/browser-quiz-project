@@ -34,7 +34,7 @@ export const initQuestionPage = () => {
   //this function creating user progress (progressbar, timer, current result and score)
   const userProgress = createProgressElement(
     quizData.questions.length,
-    quizData.currentQuestionIndex + 1,
+    quizData.currentQuestionIndex,
     numberOfCorrects
   );
 
