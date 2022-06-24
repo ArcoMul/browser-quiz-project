@@ -14,6 +14,9 @@ import { quizData } from '../data.js';
 import { createAlertElement } from '../views/questionView.js';
 
 let currentAnswerElement = [];
+const soundCorrect = new Audio('../../public/sounds/sound_correct.mp3');
+const soundWrong = new Audio('../../public/sounds/sound_wrong.mp3');
+
 export const initQuestionPage = () => {
     const userInterface = document.getElementById(USER_INTERFACE_ID);
     userInterface.innerHTML = '';
@@ -56,9 +59,7 @@ const nextQuestion = () => {
     const addClass =
         quizData.currentQuestionAnswer === correctAnswer ? 'correct' : 'wrong';
     const body = document.getElementById(USER_INTERFACE_ID);
-    const soundCorrect = new Audio('../../public/sounds/sound_correct.mp3');
-    const soundWrong = new Audio('../../public/sounds/sound_wrong.mp3');
-
+   
     if (quizData.currentQuestionAnswer === null) {
         const alertElement = createAlertElement();
         body.appendChild(alertElement);
