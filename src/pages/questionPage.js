@@ -64,6 +64,7 @@ export const initQuestionPage = () => {
 };
 
 const nextQuestion = () => {
+  //User receive a feedback if the answer correct or wrong
   const correctAnswer =
     quizData.questions[quizData.currentQuestionIndex].correct;
   const isCorrect = quizData.currentQuestionAnswer === correctAnswer;
@@ -75,6 +76,9 @@ const nextQuestion = () => {
   if (quizData.currentQuestionAnswer === null) {
     const alertElement = createAlertElement();
     body.appendChild(alertElement);
+    setTimeout(() => {
+      body.removeChild(alertElement);
+    }, 1200);
     return;
   }
 
@@ -102,6 +106,7 @@ const nextQuestion = () => {
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .removeEventListener('click', nextQuestion);
 
+  //After clicked on next question button it passes next question
   setTimeout(() => {
     initQuestionPage();
     currentAnswerElement.classList.remove(addClass);
