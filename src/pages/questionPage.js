@@ -5,6 +5,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   NEXT_QUESTION_DELAY,
+  ALERT_DIDNT_ANSWER,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -64,6 +65,7 @@ export const initQuestionPage = () => {
 };
 
 const nextQuestion = () => {
+  //User receive a feedback if the answer correct or wrong
   const correctAnswer =
     quizData.questions[quizData.currentQuestionIndex].correct;
   const isCorrect = quizData.currentQuestionAnswer === correctAnswer;
@@ -72,12 +74,17 @@ const nextQuestion = () => {
   const body = document.getElementById(USER_INTERFACE_ID);
 
   //user must answer question. shows alert when its not answered.
+  
   if (quizData.currentQuestionAnswer === null) {
     const alertElement = createAlertElement();
+    const alertNotified = document.getElementById(ALERT_DIDNT_ANSWER); 
+    if(!alertNotified){ //Not repeat second time alert message
     body.appendChild(alertElement);
-    return;
+    }
+    return
   }
-
+   
+  
   if (isCorrect) {
     numberOfCorrects++;
   }
@@ -102,6 +109,7 @@ const nextQuestion = () => {
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .removeEventListener('click', nextQuestion);
 
+    //After clicked on next question button it passes next question
   setTimeout(() => {
     initQuestionPage();
     currentAnswerElement.classList.remove(addClass);
