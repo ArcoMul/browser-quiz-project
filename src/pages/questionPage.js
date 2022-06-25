@@ -26,7 +26,6 @@ let currentAnswerElement = [];
 const correctSound = new Audio('public/sounds/sound_correct.mp3');
 const wrongSound = new Audio('public/sounds/sound_wrong.mp3');
 let numberOfCorrects = getNumberOfCorrectsFromStorage();
-const timeElement = createTimeElement();
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -42,10 +41,12 @@ export const initQuestionPage = () => {
     quizData.currentQuestionIndex + 1,
     numberOfCorrects
   );
+  const timeElement = createTimeElement();
   userInterface.appendChild(timeElement);
   userInterface.appendChild(userProgress);
   userInterface.appendChild(questionElement);
   createTimePressure();
+
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
