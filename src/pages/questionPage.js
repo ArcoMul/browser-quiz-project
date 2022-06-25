@@ -73,17 +73,17 @@ const nextQuestion = () => {
   isCorrect ? correctSound.play() : wrongSound.play();
   const body = document.getElementById(USER_INTERFACE_ID);
 
-  //user must answer question. shows alert when its not answered.
+  //user must answer question. shows alert when its not answered.Don't repeat second time.
   
   if (quizData.currentQuestionAnswer === null) {
     const alertElement = createAlertElement();
     const alertNotified = document.getElementById(ALERT_DIDNT_ANSWER); 
-    if(!alertNotified){ //Not repeat second time alert message
-    body.appendChild(alertElement);
+    if (!alertNotified) {
+    body.appendChild(alertElement) ;
     }
     return
   }
-   
+ 
   
   if (isCorrect) {
     numberOfCorrects++;
