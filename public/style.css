@@ -205,11 +205,10 @@ body {
 
 .container {
   background-color: white;
-  margin-top: 15rem;
   display: flex;
   flex-wrap: wrap;
   width: 80%;
-  height: 32rem;
+  height: 35rem;
   padding: 1rem;
   border-radius: 10px;
   overflow-y: scroll;
