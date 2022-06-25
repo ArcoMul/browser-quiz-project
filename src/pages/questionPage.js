@@ -20,7 +20,7 @@ import {
 } from '../lib/storage.js';
 import { createAlertElement } from '../views/questionView.js';
 import { initResultPage } from '../pages/resultPage.js';
-import { createTimePressure } from './timer.js';
+import { createTimePressure } from '../lib/timer.js';
 
 let currentAnswerElement = [];
 const correctSound = new Audio('public/sounds/sound_correct.mp3');
@@ -28,12 +28,11 @@ const wrongSound = new Audio('public/sounds/sound_wrong.mp3');
 let numberOfCorrects = getNumberOfCorrectsFromStorage();
 
 export const initQuestionPage = () => {
-  createTimePressure();
-
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
   const timeElement = createTimeElement();
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+
   document.title = currentQuestion.text.substring(0, 60) + '...';
   const questionElement = createQuestionElement(currentQuestion.text);
 
@@ -46,7 +45,7 @@ export const initQuestionPage = () => {
   userInterface.appendChild(timeElement);
   userInterface.appendChild(userProgress);
   userInterface.appendChild(questionElement);
-
+  createTimePressure();
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
