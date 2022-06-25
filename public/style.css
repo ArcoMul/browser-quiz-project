@@ -29,19 +29,6 @@ body {
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
 }
-.welcome-page {
-  height: 70%;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 0, 0.401),
-      rgba(0, 0, 255, 0.363)
-    ),
-    url(/public/programming-code-coding-or-hacker-background-vector.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 5px 0;
-  margin: 50px auto;
-}
 .welcome-page h1 {
   font-size: 50px;
   margin: 1, 3rem auto;
@@ -233,4 +220,10 @@ body {
 
 .question-result-card h2 {
   font-size: 1.2rem;
+}
+#canvas{
+  max-height: 100%;
+  max-width: 100%;
+  background-color:black;
+  display: block;
 }

@@ -4,6 +4,7 @@ import { quizData } from './data.js';
 import { initQuestionPage } from './pages/questionPage.js';
 import { initWelcomePage } from './pages/welcomePage.js';
 import { getAnswersFromStorage } from './lib/storage.js';
+import { drawText } from './pages/canvasPage.js';
 
 const loadApp = () => {
   const answers = getAnswersFromStorage();
@@ -13,6 +14,7 @@ const loadApp = () => {
   } else {
     quizData.currentQuestionIndex = answers.length;
     initQuestionPage();
+    setInterval(drawText, 50);
   }
 };
 
