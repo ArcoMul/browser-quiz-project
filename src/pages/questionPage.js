@@ -32,6 +32,8 @@ export const initQuestionPage = () => {
   document.title = currentQuestion.text.substring(0, 60) + '...';
   const questionElement = createQuestionElement(currentQuestion.text);
 
+  const alertElement = createAlertElement();
+
   //this function creating user progress (progressbar, timer, current result and score)
   const userProgress = createProgressElement(
     quizData.questions.length,
@@ -41,6 +43,7 @@ export const initQuestionPage = () => {
 
   userInterface.appendChild(userProgress);
   userInterface.appendChild(questionElement);
+  userInterface.appendChild(alertElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
@@ -74,17 +77,13 @@ const nextQuestion = () => {
   const body = document.getElementById(USER_INTERFACE_ID);
 
   //user must answer question. shows alert when its not answered.Don't repeat second time.
-  
+
   if (quizData.currentQuestionAnswer === null) {
-    const alertElement = createAlertElement();
-    const alertNotified = document.getElementById(ALERT_DIDNT_ANSWER); 
-    if (!alertNotified) {
-    body.appendChild(alertElement) ;
-    }
-    return
+    document.querySelector('.alert-div').style.visibility = 'visible';
+
+    return;
   }
- 
-  
+
   if (isCorrect) {
     numberOfCorrects++;
   }
@@ -109,7 +108,7 @@ const nextQuestion = () => {
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .removeEventListener('click', nextQuestion);
 
-    //After clicked on next question button it passes next question
+  //After clicked on next question button it passes next question
   setTimeout(() => {
     initQuestionPage();
     currentAnswerElement.classList.remove(addClass);
