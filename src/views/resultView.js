@@ -16,12 +16,12 @@ export const createResultElement = (results) => {
 
     questionCard.innerHTML = String.raw`
   <h2>${result.text}</h2>
-  <p>Your answer:${
+  <p> <b>Your answer: </b> ${
     userAnswers[results.indexOf(result)] !== undefined
       ? result.answers[userAnswers[results.indexOf(result)]]
       : 'You did not answer this question!'
   } </p>
-  <p>Correct answer: ${result.correct} = ${result.answers[result.correct]}</p>
+  <p> <b>Correct answer: </b> ${result.answers[result.correct]}</p>
    <h3>Read more about</h3>
   `;
     /* on above if user dont answer until time is up, we fixed your answer on resultpage */
@@ -31,9 +31,11 @@ export const createResultElement = (results) => {
     result.links.forEach((link) => {
       const newLink = document.createElement('a');
       newLink.innerHTML = String.raw`
+    
 
 ${link.text}`;
       newLink.setAttribute('href', link.href);
+      newLink.setAttribute('target', '_blank');
       questionCard.appendChild(newLink);
     });
   });
