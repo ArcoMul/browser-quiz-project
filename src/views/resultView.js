@@ -22,7 +22,7 @@ export const createResultElement = (results) => {
       : 'You did not answer this question!'
   } </p>
   <p>Correct answer: ${result.correct} = ${result.answers[result.correct]}</p>
-   <h3>Read more about:</h3>
+   <h3>Read more about</h3>
   `;
     /* on above if user dont answer until time is up, we fixed your answer on resultpage */
 

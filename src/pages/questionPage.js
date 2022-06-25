@@ -32,6 +32,8 @@ export const initQuestionPage = () => {
   document.title = currentQuestion.text.substring(0, 60) + '...';
   const questionElement = createQuestionElement(currentQuestion.text);
 
+  const alertElement = createAlertElement();
+
   //this function creating user progress (progressbar, timer, current result and score)
   const userProgress = createProgressElement(
     quizData.questions.length,
@@ -41,6 +43,7 @@ export const initQuestionPage = () => {
 
   userInterface.appendChild(userProgress);
   userInterface.appendChild(questionElement);
+  userInterface.appendChild(alertElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
@@ -76,11 +79,8 @@ const nextQuestion = () => {
   //user must answer question. shows alert when its not answered.Don't repeat second time.
 
   if (quizData.currentQuestionAnswer === null) {
-    const alertElement = createAlertElement();
-    const alertNotified = document.getElementById(ALERT_DIDNT_ANSWER);
-    if (!alertNotified) {
-      body.appendChild(alertElement);
-    }
+    document.querySelector('.alert-div').style.visibility = 'visible';
+
     return;
   }
 
@@ -96,11 +96,6 @@ const nextQuestion = () => {
   currentAnswerElement.classList.remove('selected');
   currentAnswerElement.classList.add(addClass);
 
-  // SIL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  if (quizData.currentQuestionIndex === 2) {
-    initResultPage();
-  }
-  //
   quizData.currentQuestionAnswer = null;
 
   // we check here that we are in last question or not
