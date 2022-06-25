@@ -8,13 +8,13 @@ import { drawText } from './pages/canvasPage.js';
 
 const loadApp = () => {
   const answers = getAnswersFromStorage();
+  setInterval(drawText, 50);
   if (answers.length === 0) {
     quizData.currentQuestionIndex = 0;
     initWelcomePage();
   } else {
     quizData.currentQuestionIndex = answers.length;
     initQuestionPage();
-    setInterval(drawText, 50);
   }
 };
 
