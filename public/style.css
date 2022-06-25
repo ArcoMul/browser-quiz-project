@@ -30,8 +30,13 @@ body {
   font-family: 'Chakra Petch', sans-serif;
 }
 .progress-time-item{
+
   font-size: 35px;
-  margin: 10px auto;
+  text-align: left;
+  align-items: flex-start ;
+  width: 70%;
+  margin-left: 20px;
+
 }
 .welcome-page {
   height: 70%;
