@@ -23,7 +23,7 @@ export const createProgressBar = (questionIndex, numberOfQuestions) => {
   const element = document.createElement('div');
   element.classList.add('progress-item');
   element.innerHTML = String.raw`
-      <h2 id="progress-text">Question ${questionIndex}/${numberOfQuestions}</h2>
+      <h2 id="progress-text">Question ${questionIndex===10?10:questionIndex+1}/${numberOfQuestions}</h2>
       <div id="progress-bar">
         <div id="progress-bar-inside">
         </div>
@@ -31,7 +31,7 @@ export const createProgressBar = (questionIndex, numberOfQuestions) => {
       `;
   const progressBarInside = element.querySelector('#progress-bar-inside');
   progressBarInside.style.width = `${
-    (questionIndex / numberOfQuestions) * 100
+    ((questionIndex+1 )/ numberOfQuestions) * 100
   }%`;
   return element;
 };
@@ -45,7 +45,7 @@ export const createNumberOfCorrectElement = (
   element.innerHTML = String.raw`
     <ul class="fa-ul">
       <li><span class="fa-li"><i class="fa-solid fa-xmark" style="color:#e03131"></i></span>: ${
-        questionIndex - numberOfCorrects - 1
+        questionIndex - numberOfCorrects 
       }</li>
       <li><span class="fa-li"><i class="fa-solid fa-check" style="color:rgb(11, 223, 36)"></i></span>: ${numberOfCorrects}</li>
     </ul>`;
