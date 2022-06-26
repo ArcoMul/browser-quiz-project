@@ -29,7 +29,8 @@ export const createQuestionElement = (question) => {
 
 export const createAlertElement = () => {
   const alert = document.createElement('div');
+  alert.classList.add('alert-div');
   alert.innerHTML = String.raw`
-  <p id="${ALERT_DIDNT_ANSWER}"> are you sure that you have answered ? </p> `;
+  <p id="${ALERT_DIDNT_ANSWER}"><i class="fa-solid fa-circle-exclamation"></i>You did not ANSWER the question!</p> `;
   return alert;
 };

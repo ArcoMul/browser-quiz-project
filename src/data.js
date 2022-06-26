@@ -76,7 +76,8 @@ export const quizData = {
         },
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration?retiredLocale=tr#for_statement',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration?retiredLocale=tr#for_statement',
         },
       ],
     },
@@ -97,17 +98,19 @@ export const quizData = {
         },
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round',
         },
       ],
     },
     {
-      text: 'Which of the following function of Array object extracts a section of an array and returns a new array?',
+      text:
+        'Which of the following function of Array object extracts a section of an array and returns a new array?',
       answers: {
-        a: 'reverse()',
-        b: 'shift()',
-        c: 'slice()',
-        d: 'some()',
+        a: 'reverse( )',
+        b: 'shift( )',
+        c: 'slice( )',
+        d: 'some( )',
       },
       correct: 'c',
       selected: null,
@@ -118,7 +121,8 @@ export const quizData = {
         },
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice',
         },
       ],
     },
@@ -126,7 +130,7 @@ export const quizData = {
       text: 'How do you find the minimum of x and y using JavaScript?',
       answers: {
         a: ' min(x,y);',
-        b: ' Math.min(x,y)', 
+        b: ' Math.min(x,y)',
         c: 'Math.min(xy)',
         d: ' min(xy);',
       },
@@ -135,7 +139,8 @@ export const quizData = {
       links: [
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min',
         },
         {
           text: 'W3 CUP',
@@ -144,7 +149,8 @@ export const quizData = {
       ],
     },
     {
-      text: 'Which JavaScript label catches all the values, except for the ones specified?',
+      text:
+        'Which JavaScript label catches all the values, except for the ones specified?',
       answers: {
         a: 'catch',
         b: ' label',
@@ -156,7 +162,8 @@ export const quizData = {
       links: [
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label',
         },
         {
           text: 'W3 Resource',
@@ -165,7 +172,7 @@ export const quizData = {
       ],
     },
     {
-      text: 'GetMonth() returns the month as:',
+      text: 'GetMonth( ) returns the month as:',
       answers: {
         a: 'Int',
         b: 'Float',
@@ -177,7 +184,8 @@ export const quizData = {
       links: [
         {
           text: 'MDN',
-          href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth',
+          href:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth',
         },
         {
           text: 'W3',
@@ -188,10 +196,10 @@ export const quizData = {
     {
       text: 'Which of the dialog box display a message and a data entry field?',
       answers: {
-        a: 'Alert()',
-        b: 'Prompt()',
-        c: 'Confirm()',
-        d: 'Msg()',
+        a: 'Alert( )',
+        b: 'Prompt( )',
+        c: 'Confirm( )',
+        d: 'Msg( )',
       },
       correct: 'b',
       selected: null,
@@ -202,7 +210,8 @@ export const quizData = {
         },
         {
           text: 'Rip Tutorial',
-          href: 'https://riptutorial.com/javascript/example/11156/usage-of-prompt--',
+          href:
+            'https://riptutorial.com/javascript/example/11156/usage-of-prompt--',
         },
       ],
     },
@@ -219,7 +228,8 @@ export const quizData = {
       links: [
         {
           text: 'Google',
-          href: 'https://www.productmanagementexercises.com/2425/calculate-the-number-of-queries-answered-google-per-second',
+          href:
+            'https://www.productmanagementexercises.com/2425/calculate-the-number-of-queries-answered-google-per-second',
         },
         {
           text: 'Quora',

@@ -5,6 +5,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   NEXT_QUESTION_DELAY,
+  ALERT_DIDNT_ANSWER,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -35,16 +36,19 @@ export const initQuestionPage = () => {
   document.title = currentQuestion.text.substring(0, 60) + '...';
   const questionElement = createQuestionElement(currentQuestion.text);
 
+  const alertElement = createAlertElement();
+
   //this function creating user progress (progressbar, timer, current result and score)
   const userProgress = createProgressElement(
     quizData.questions.length,
-    quizData.currentQuestionIndex + 1,
+    quizData.currentQuestionIndex,
     numberOfCorrects
   );
   const timeElement = createTimeElement();
   userInterface.appendChild(timeElement);
   userInterface.appendChild(userProgress);
   userInterface.appendChild(questionElement);
+  userInterface.appendChild(alertElement);
   createTimePressure();
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
@@ -70,6 +74,7 @@ export const initQuestionPage = () => {
 };
 
 const nextQuestion = () => {
+  //User receive a feedback if the answer correct or wrong
   const correctAnswer =
     quizData.questions[quizData.currentQuestionIndex].correct;
   const isCorrect = quizData.currentQuestionAnswer === correctAnswer;
@@ -77,10 +82,11 @@ const nextQuestion = () => {
   isCorrect ? correctSound.play() : wrongSound.play();
   const body = document.getElementById(USER_INTERFACE_ID);
 
-  //user must answer question. shows alert when its not answered.
+  //user must answer question. shows alert when its not answered.Don't repeat second time.
+
   if (quizData.currentQuestionAnswer === null) {
-    const alertElement = createAlertElement();
-    body.appendChild(alertElement);
+    document.querySelector('.alert-div').style.visibility = 'visible';
+
     return;
   }
 
@@ -108,6 +114,7 @@ const nextQuestion = () => {
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .removeEventListener('click', nextQuestion);
 
+  //After clicked on next question button it passes next question
   setTimeout(() => {
     initQuestionPage();
     currentAnswerElement.classList.remove(addClass);
