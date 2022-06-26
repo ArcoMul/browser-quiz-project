@@ -5,7 +5,6 @@
 }
 .centered {
   position: fixed;
-  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -156,7 +155,7 @@ body {
   height: 500px;
   background-color: #d3ebcd;
   border-radius: 10px;
-  padding: 45px;
+  padding: 35px;
   top: 25%;
 }
 
@@ -308,6 +307,5 @@ body {
 #canvas{
   max-height: 100%;
   max-width: 100%;
-  background-color:black;
   display: block;
 }
