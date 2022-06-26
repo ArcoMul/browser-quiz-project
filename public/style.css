@@ -9,11 +9,10 @@
   transform: translate(-50%, -50%);
   text-align: center;
   min-width: 80%;
-  height: 55rem;
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
-  top: 40%;
-  margin-top: 8rem;
+  top: 50%;
 }
 
 #user-interface {
