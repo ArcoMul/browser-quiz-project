@@ -9,11 +9,10 @@
   transform: translate(-50%, -50%);
   text-align: center;
   min-width: 80%;
-  height: 55rem;
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
-  top: 40%;
-  margin-top: 8rem;
+  top: 50%;
 }
 
 #user-interface {
@@ -33,7 +32,13 @@ body {
   font-size: 16px;
   font-family: 'Chakra Petch', sans-serif;
 }
-
+.progress-time-item{
+  font-size: 35px;
+  text-align: left;
+  align-items: flex-start ;
+  width: 70%;
+  margin-left: 20px;
+}
 .welcome-page h1 {
   font-size: 50px;
   margin: 1, 3rem auto;

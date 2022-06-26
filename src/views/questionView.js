@@ -7,6 +7,7 @@ import { ALERT_DIDNT_ANSWER } from '../constants.js';
 /**
  * Create a full question element
  * @returns {Element}
+ 
  */
 export const createQuestionElement = (question) => {
   const element = document.createElement('div');
@@ -30,6 +31,6 @@ export const createAlertElement = () => {
   const alert = document.createElement('div');
   alert.classList.add('alert-div');
   alert.innerHTML = String.raw`
-  <p id="${ALERT_DIDNT_ANSWER}"><i class="fa-solid fa-circle-exclamation"></i>You did not ANSWER the question! </p> `;
+  <p id="${ALERT_DIDNT_ANSWER}"><i class="fa-solid fa-circle-exclamation"></i>You did not ANSWER the question!</p> `;
   return alert;
 };
