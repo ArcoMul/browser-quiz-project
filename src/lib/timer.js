@@ -22,5 +22,6 @@ export const createTimePressure = () => {
       initResultPage();
     }
   };
+  timeCounter();
   const timer = setInterval(timeCounter, 1000);
 };
