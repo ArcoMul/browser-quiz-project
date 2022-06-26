@@ -15,7 +15,7 @@ for (let x = 0; x < row; x++) {
 
 export const drawText = () => {
   //add obacity to background
-  ctx.fillStyle = 'rgba(4, 28, 50, 0.05';
+  ctx.fillStyle = 'rgba(4, 28, 50, 0.1)';
 
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = '#fff';
